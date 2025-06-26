@@ -1,4 +1,4 @@
-from config import code
+from testcurl.h.config import code
 
 def code_s(text):
     res = ""
