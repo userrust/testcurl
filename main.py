@@ -1,26 +1,23 @@
-from fastapi import FastAPI
-from pydantic import BaseModel
+from config import code
 
-app = FastAPI()
+def code_s(text):
+    res = ""
+    text_work = list(text.lower())
 
-arr = []
+    for i in text_work:
+        if i in code:
+            res += code[i]
 
-
-class New(BaseModel):
-    text: str
-
-
-@app.get("/test")
-async def test():
-    return "Information Kapybara"
+    print(res)
 
 
-@app.get("/info")
-async def f():
-    return arr[0]
+def decode(cod):
+    array = [cod[i:i + 5] for i in range(0, len(cod), 5)]
 
+    result = ""
 
-@app.post("/new_info")
-async def new_info(text: New):
-    arr[0] = text.text
-    return arr[0]
+    for q in array:
+        for h in code:
+            if q in code[h]:
+                result += h
+    print(result)
